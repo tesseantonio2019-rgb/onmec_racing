@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onmec Racing | ITT Jannuzzi Andria - STEM Racing Scuderia</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Rajdhani & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Rajdhani', 'sans-serif'],
+                    },
+                    colors: {
+                        carbon: {
+                            950: '#07090e',
+                            900: '#0d1117',
+                            800: '#161d28',
+                            700: '#212c3d',
+                        },
+                        racing: {
+                            red: '#e60012',
+                            brightRed: '#ff1a2d',
+                            darkRed: '#a8000d',
+                        }
+                    },
+                    boxShadow: {
+                        'neon-red': '0 0 25px rgba(230, 0, 18, 0.4)',
+                        'neon-white': '0 0 20px rgba(255, 255, 255, 0.25)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-carbon-950 text-gray-100 font-sans antialiased selection:bg-racing-red selection:text-white overflow-x-hidden">
+
+    <!-- ==================== HEADER & NAVBAR ==================== -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-carbon-950/85 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo Ufficiale Onmec Racing -->
+                <a href="#home" class="flex items-center space-x-3.5 group">
+                    <div class="relative flex items-center justify-center w-13 h-13 rounded-xl bg-white/95 border-2 border-racing-red shadow-neon-red group-hover:scale-105 group-hover:border-racing-brightRed transition-all duration-300 p-1 overflow-hidden">
+                        <img src="logo.png" alt="Logo Ufficiale Onmec Racing" class="w-11 h-11 object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <!-- Fallback SVG fedele al logo ufficiale (ingranaggio/rete ottagonale rossa + monoposto F1 frontale) -->
+                        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-11 h-11 hidden">
+                            <!-- Raggi esterni verso gli 8 nodi -->
+                            <g stroke="#e60012" stroke-width="4.5" stroke-linecap="round">
+                                <line x1="46" y1="26" x2="39" y2="13"/>
+                                <line x1="74" y1="26" x2="81" y2="13"/>
+                                <line x1="94" y1="46" x2="107" y2="39"/>
+                                <line x1="94" y1="74" x2="107" y2="81"/>
+                                <line x1="74" y1="94" x2="81" y2="107"/>
+                                <line x1="46" y1="94" x2="39" y2="107"/>
+                                <line x1="26" y1="74" x2="13" y2="81"/>
+                                <line x1="26" y1="46" x2="13" y2="39"/>
+                                <!-- Raggi interni -->
+                                <line x1="46" y1="26" x2="52" y2="41"/>
+                                <line x1="74" y1="26" x2="68" y2="41"/>
+                                <line x1="94" y1="46" x2="79" y2="52"/>
+                                <line x1="94" y1="74" x2="79" y2="68"/>
+                                <line x1="74" y1="94" x2="68" y2="79"/>
+                                <line x1="46" y1="94" x2="52" y2="79"/>
+                                <line x1="26" y1="74" x2="41" y2="68"/>
+                                <line x1="26" y1="46" x2="41" y2="52"/>
+                            </g>
+                            <!-- Ottagono esterno e interno -->
+                            <polygon points="46,26 74,26 94,46 94,74 74,94 46,94 26,74 26,46" stroke="#e60012" stroke-width="5" fill="none"/>
+                            <polygon points="52,41 68,41 79,52 79,68 68,79 52,79 41,68 41,52" stroke="#e60012" stroke-width="4" fill="none"/>
+                            <!-- 8 Nodi circolari esterni -->
+                            <g fill="#ffffff" stroke="#e60012" stroke-width="4.5">
+                                <circle cx="39" cy="13" r="6.5"/>
+                                <circle cx="81" cy="13" r="6.5"/>
+                                <circle cx="107" cy="39" r="6.5"/>
+                                <circle cx="107" cy="81" r="6.5"/>
+                                <circle cx="81" cy="107" r="6.5"/>
+                                <circle cx="39" cy="107" r="6.5"/>
+                                <circle cx="13" cy="81" r="6.5"/>
+                                <circle cx="13" cy="39" r="6.5"/>
+                            </g>
+                            <!-- Monoposto Formula 1 frontale stilizzata -->
+                            <rect x="40" y="45" width="40" height="4" rx="1" fill="#0d1117"/>
+                            <path d="M54 43H66L68 55H52L54 43Z" fill="#0d1117"/>
+                            <rect x="57" y="45" width="6" height="4" fill="#ffffff"/>
+                            <rect x="26" y="53" width="13" height="19" rx="3" fill="#0d1117"/>
+                            <rect x="81" y="53" width="13" height="19" rx="3" fill="#0d1117"/>
+                            <line x1="39" y1="58" x2="53" y2="56" stroke="#0d1117" stroke-width="2.5"/>
+                            <line x1="39" y1="64" x2="53" y2="63" stroke="#0d1117" stroke-width="2.5"/>
+                            <line x1="81" y1="58" x2="67" y2="56" stroke="#0d1117" stroke-width="2.5"/>
+                            <line x1="81" y1="64" x2="67" y2="63" stroke="#0d1117" stroke-width="2.5"/>
+                            <path d="M53 53H67L64 71H56L53 53Z" fill="#0d1117"/>
+                            <line x1="57" y1="56" x2="57" y2="68" stroke="#ffffff" stroke-width="1"/>
+                            <line x1="60" y1="56" x2="60" y2="68" stroke="#ffffff" stroke-width="1"/>
+                            <line x1="63" y1="56" x2="63" y2="68" stroke="#ffffff" stroke-width="1"/>
+                            <path d="M24 70H96L93 74H27L24 70Z" fill="#0d1117"/>
+                            <line x1="32" y1="71.5" x2="88" y2="71.5" stroke="#ffffff" stroke-width="1"/>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-display text-2xl font-bold tracking-wider text-white leading-none">
+                            ONMEC <span class="text-racing-red">RACING</span>
+                        </span>
+                        <span class="text-[10px] text-gray-400 uppercase tracking-[0.2em] font-semibold mt-0.5">ITT Jannuzzi</span>
+                    </div>
+                </a>
+
+                <!-- Nav Desktop -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-sm font-semibold text-gray-300 hover:text-racing-red transition-colors uppercase tracking-wider">Home</a>
+                    <a href="#storia" class="text-sm font-semibold text-gray-300 hover:text-racing-red transition-colors uppercase tracking-wider">Storia & Trionfi</a>
+                    <a href="#monoposto" class="text-sm font-semibold text-gray-300 hover:text-racing-red transition-colors uppercase tracking-wider">La Monoposto</a>
+                    <a href="#team" class="text-sm font-semibold text-gray-300 hover:text-racing-red transition-colors uppercase tracking-wider">Il Team</a>
+                    <a href="#sponsor" class="text-sm font-semibold text-gray-300 hover:text-racing-red transition-colors uppercase tracking-wider">Sponsor</a>
+                    <a href="#contatti" class="px-5 py-2.5 rounded-lg bg-racing-red text-white font-display font-bold uppercase tracking-wider text-sm shadow-neon-red hover:bg-racing-brightRed transition-all transform hover:-translate-y-0.5">
+                        Contatti & Partner
+                    </a>
+                </nav>
+
+                <!-- Hamburger Mobile -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" type="button" class="p-2 rounded-lg text-gray-300 hover:text-white hover:bg-carbon-800 focus:outline-none" aria-label="Menu">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Mobile Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-carbon-900 border-b border-white/10 px-4 pt-3 pb-6 space-y-2">
+            <a href="#home" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-200 hover:bg-carbon-800 hover:text-racing-red">Home</a>
+            <a href="#storia" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-200 hover:bg-carbon-800 hover:text-racing-red">Storia & Trionfi</a>
+            <a href="#monoposto" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-200 hover:bg-carbon-800 hover:text-racing-red">La Monoposto</a>
+            <a href="#team" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-200 hover:bg-carbon-800 hover:text-racing-red">Il Team</a>
+            <a href="#sponsor" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-200 hover:bg-carbon-800 hover:text-racing-red">Sponsor</a>
+            <a href="#contatti" class="mobile-link block px-3 py-3 mt-3 text-center rounded-lg bg-racing-red text-white font-display font-bold uppercase tracking-wider">Contatti & Partner</a>
+        </div>
+    </header>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="home" class="relative pt-32 pb-24 lg:pt-48 lg:pb-36 overflow-hidden">
+        <!-- Sfondo Carbonio & Effetti Luce -->
+        <div class="absolute inset-0 bg-[radial-gradient(#1f293d_1px,transparent_1px)] [background-size:24px_24px] opacity-25 -z-10"></div>
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-racing-red/15 rounded-full blur-[140px] -z-10 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center max-w-4xl mx-auto">
+                <!-- Badge Celebrativo Principale -->
+                <div class="inline-flex flex-wrap items-center justify-center gap-2 px-4 py-2 rounded-full bg-carbon-800/90 border border-racing-red/50 text-white text-xs sm:text-sm font-bold uppercase tracking-widest mb-6 shadow-neon-red">
+                    <span class="flex h-2.5 w-2.5 relative">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-racing-brightRed opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-racing-red"></span>
+                    </span>
+                    <span>1° Posto South Regional Championship 2026 • 595 Punti • Finalisti Mugello</span>
+                </div>
+
+                <h1 class="font-display text-5xl sm:text-7xl lg:text-8xl font-extrabold uppercase tracking-tight text-white leading-none mb-6">
+                    VELOCITÀ, INNOVAZIONE E INGEGNERIA<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-racing-red via-racing-brightRed to-white">
+                        DAL CUORE DELL'ITT JANNUZZI
+                    </span>
+                </h1>
+
+                <p class="text-base sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
+                    Siamo il team <strong>Onmec Racing</strong> di Andria. Progettiamo il futuro del motorsport scolastico unendo meccatronica di precisione, aerodinamica avanzata e passione pura.
+                </p>
+
+                <!-- Azioni Rapide -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                    <a href="#monoposto" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-racing-red text-white font-display font-bold text-lg uppercase tracking-wider shadow-neon-red hover:bg-racing-brightRed transition-all transform hover:-translate-y-1">
+                        Scopri l'Auto <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#storia" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-carbon-800 border border-white/15 text-white font-display font-bold text-lg uppercase tracking-wider hover:border-racing-red hover:text-racing-red transition-all">
+                        La Nostra Storia
+                    </a>
+                </div>
+
+                <!-- KPI / Traguardi -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t border-white/10">
+                    <div class="p-4 rounded-xl bg-carbon-900/80 border border-white/5">
+                        <div class="font-display text-3xl sm:text-4xl font-bold text-racing-red">1° Posto</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">South Regional 2026</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-carbon-900/80 border border-white/5">
+                        <div class="font-display text-3xl sm:text-4xl font-bold text-white">595 Punti</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Punteggio Ufficiale Bari</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-carbon-900/80 border border-white/5">
+                        <div class="font-display text-3xl sm:text-4xl font-bold text-racing-red">Mugello</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Finali Nazionali</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-carbon-900/80 border border-white/5">
+                        <div class="font-display text-3xl sm:text-4xl font-bold text-white">Record</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Auto più Veloce</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== LA NOSTRA STORIA & TRIONFI ==================== -->
+    <section id="storia" class="py-24 bg-carbon-900/60 border-y border-white/10 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+                <!-- Testo Trionfo -->
+                <div>
+                    <span class="text-racing-red font-display font-bold uppercase tracking-widest text-sm">South Regional Championship 2026 • Bari</span>
+                    <h2 class="font-display text-4xl sm:text-5xl font-bold text-white uppercase mt-2 mb-6">
+                        Dal laboratorio di Andria <span class="text-racing-red">al Circuito del Mugello</span>
+                    </h2>
+                    <p class="text-gray-300 leading-relaxed mb-4">
+                        Il trionfo del team <strong>Onmec Jannuzzi Racing</strong> dell'ITT Jannuzzi di Andria ha dominato il <strong>South Regional Championship 2026</strong> (15-16 Maggio 2026 a Bari, organizzato da STEM Racing Italy e ITS Academy 'A. Cuccovillo'). Con una combinazione perfetta di progettazione CAD, ottimizzazione aerodinamica e ingegneria meccatronica, abbiamo conquistato la vetta della classifica con <strong>595 punti</strong>.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed mb-8">
+                        Oltre al <strong>1° posto assoluto</strong> nella classifica generale davanti a Kronoracing e al titolo di <strong>auto più veloce in pista</strong>, questo risultato ci ha spalancato le porte delle finali nazionali nel tempio della velocità italiano: l'<strong>Autodromo Internazionale del Mugello</strong>.
+                    </p>
+
+                    <!-- Punti Chiave -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl bg-carbon-800 border border-white/10">
+                            <i class="fa-solid fa-award text-racing-red text-2xl mb-2"></i>
+                            <h3 class="font-display font-bold text-lg text-white">595 Punti Ufficiali</h3>
+                            <p class="text-xs text-gray-400 mt-1">1° posto assoluto al South Regional Championship 2026 di Bari.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-carbon-800 border border-white/10">
+                            <i class="fa-solid fa-gauge-high text-racing-brightRed text-2xl mb-2"></i>
+                            <h3 class="font-display font-bold text-lg text-white">Velocità Pura</h3>
+                            <p class="text-xs text-gray-400 mt-1">Tempi record registrati nei test cronometrati e accelerazione fulminea.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Box Visivo Mugello & Trofeo -->
+                <div class="relative">
+                    <div class="rounded-2xl overflow-hidden border border-white/10 bg-carbon-800 shadow-2xl relative group">
+                        <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1000&q=80" 
+                             alt="Onmec Racing Monoposto in Pista" 
+                             onerror="this.src='https://placehold.co/800x600/161d28/e60012?text=ONMEC+RACING+MUGELLO'"
+                             class="w-full h-80 sm:h-96 object-cover opacity-85 group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-carbon-950 via-carbon-950/40 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 p-5 rounded-xl bg-carbon-900/90 backdrop-blur-md border border-racing-red/40">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-xs text-racing-red uppercase font-bold tracking-wider">Traguardo Raggiunto</p>
+                                    <p class="font-display text-xl sm:text-2xl font-bold text-white mt-0.5">FINALISTI NAZIONALI STEM RACING</p>
+                                </div>
+                                <div class="w-12 h-12 rounded-full bg-racing-red/20 border border-racing-red flex items-center justify-center text-racing-red">
+                                    <i class="fa-solid fa-trophy text-xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== RISULTATI UFFICIALI FASE REGIONALE ==================== -->
+            <div class="pt-12 border-t border-white/10">
+                <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+                    <div>
+                        <span class="text-racing-red font-display font-bold uppercase tracking-widest text-sm">Albo d'Oro • Fase Regionale</span>
+                        <h3 class="font-display text-3xl sm:text-4xl font-bold text-white uppercase mt-1">
+                            Risultati Ufficiali <span class="text-racing-red">South Regional Championship 2026</span>
+                        </h3>
+                    </div>
+                    <span class="inline-flex items-center px-4 py-1.5 rounded-full bg-carbon-800 border border-white/10 text-xs font-semibold text-gray-300">
+                        <i class="fa-solid fa-location-dot text-racing-red mr-2"></i> 15-16 Maggio 2026 • Bari (ITS Academy A. Cuccovillo)
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Card 1: Targa Ufficiale 1° Posto -->
+                    <div class="rounded-2xl bg-carbon-900 border border-white/10 hover:border-racing-red/60 transition-all overflow-hidden shadow-xl group flex flex-col">
+                        <div class="relative aspect-[16/10] bg-carbon-950 overflow-hidden">
+                            <img src="risultato-targa.jpg" 
+                                 alt="Targa Ufficiale 1° Posto South Regional Championship 2026 Bari" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <!-- Fallback grafico fedele alla targa ufficiale del 1° posto -->
+                            <div class="hidden w-full h-full bg-gradient-to-br from-slate-100 via-white to-slate-200 p-6 flex-col items-center justify-between text-center border-8 border-slate-300">
+                                <div class="flex items-center justify-center gap-6 w-full text-[11px] font-extrabold tracking-tight">
+                                    <span class="text-rose-600"><i class="fa-solid fa-flag-checkered mr-1"></i> STEM RACING ITALY</span>
+                                    <span class="text-slate-700"><i class="fa-solid fa-gear text-orange-600 mr-1"></i> ITS Academy A. Cuccovillo</span>
+                                </div>
+                                <div class="my-1">
+                                    <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-b from-amber-300 to-amber-500 border-4 border-amber-600 flex items-center justify-center shadow-md">
+                                        <span class="font-display text-3xl font-extrabold text-slate-900">1<sup class="text-xs">ST</sup></span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="font-display text-2xl sm:text-3xl font-extrabold uppercase tracking-wide bg-gradient-to-r from-rose-600 via-orange-500 to-purple-700 bg-clip-text text-transparent">
+                                        SOUTH REGIONAL CHAMPIONSHIP 2026
+                                    </div>
+                                    <div class="text-slate-800 font-bold text-sm mt-1">15-16 MAY 2026 - Bari</div>
+                                </div>
+                            </div>
+                            <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-carbon-950/85 backdrop-blur-md border border-amber-400/50 text-amber-300 text-xs font-display font-bold uppercase tracking-wider">
+                                <i class="fa-solid fa-medal mr-1"></i> Targa 1° Classificato
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-display text-2xl font-bold text-white">1st Place • South Regional Championship</h4>
+                                <p class="text-sm text-gray-400 mt-2 leading-relaxed">
+                                    Riconoscimento ufficiale conferito da <strong>STEM Racing Italy</strong> e <strong>ITS Academy A. Cuccovillo</strong> al termine delle due giornate di gara a Bari (15-16 Maggio 2026).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Tabellone Classifica Finale (595 Punti) -->
+                    <div class="rounded-2xl bg-carbon-900 border border-white/10 hover:border-racing-red/60 transition-all overflow-hidden shadow-xl group flex flex-col">
+                        <div class="relative aspect-[16/10] bg-carbon-950 overflow-hidden">
+                            <img src="risultato-classifica.jpg" 
+                                 alt="Classifica Finale South Regional Championship 2026 - Onmec Jannuzzi Racing 595 Punti" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <!-- Fallback grafico fedele al tabellone ufficiale della classifica -->
+                            <div class="hidden w-full h-full bg-gradient-to-b from-blue-600 via-blue-700 to-indigo-900 p-5 sm:p-7 flex-col justify-center gap-4">
+                                <div class="text-center text-[10px] font-bold uppercase tracking-[0.25em] text-pink-300 mb-1">
+                                    STEM RACING ITALY • FINAL STANDINGS
+                                </div>
+                                <div class="flex items-center justify-between px-4 py-3 rounded-xl bg-blue-900/70 border-2 border-pink-500 shadow-[0_0_20px_rgba(236,72,153,0.4)]">
+                                    <span class="font-display text-3xl sm:text-4xl font-extrabold text-white w-10">1</span>
+                                    <div class="text-center font-display font-extrabold text-white text-base sm:text-xl leading-tight tracking-wide">
+                                        ONMEC JANNUZZI RACING
+                                    </div>
+                                    <span class="font-display text-2xl sm:text-3xl font-extrabold text-white pl-3 border-l border-pink-500/60">595</span>
+                                </div>
+                                <div class="flex items-center justify-between px-4 py-2.5 rounded-xl bg-blue-950/60 border border-pink-500/50 opacity-85 mx-3">
+                                    <span class="font-display text-xl sm:text-2xl font-bold text-white w-8">2</span>
+                                    <div class="text-center font-display font-bold text-white text-sm sm:text-base tracking-wider">
+                                        KRONORACING
+                                    </div>
+                                    <span class="font-display text-lg sm:text-xl font-bold text-gray-300 pl-3 border-l border-pink-500/40">2°</span>
+                                </div>
+                            </div>
+                            <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-carbon-950/85 backdrop-blur-md border border-racing-red/50 text-racing-brightRed text-xs font-display font-bold uppercase tracking-wider">
+                                <i class="fa-solid fa-ranking-star mr-1"></i> Classifica Finale: 595 PT
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-display text-2xl font-bold text-white">Vetta della Classifica • 595 Punti</h4>
+                                <p class="text-sm text-gray-400 mt-2 leading-relaxed">
+                                    Il tabellone ufficiale delle premiazioni consacra <strong>Onmec Jannuzzi Racing</strong> al <strong>1° posto</strong> con <strong>595 punti</strong>, precedendo Kronoracing e staccando il pass per le finali nazionali.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== LA MONOPOSTO / TECH SPECS ==================== -->
+    <section id="monoposto" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-racing-red font-display font-bold uppercase tracking-widest text-sm">Ingegneria Meccatronica</span>
+                <h2 class="font-display text-4xl sm:text-5xl font-bold text-white uppercase mt-2 mb-4">
+                    La Monoposto <span class="text-racing-red">Onmec Racing</span>
+                </h2>
+                <p class="text-gray-400">
+                    Ogni millimetro della nostra vettura è stato studiato, simulato e ottimizzato al computer prima di prendere forma nei reparti dell'ITT Jannuzzi.
+                </p>
+            </div>
+
+            <!-- Griglia Specifiche Tecniche -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Spec 1 -->
+                <div class="p-8 rounded-2xl bg-carbon-900 border border-white/10 hover:border-racing-red/60 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-racing-red/10 border border-racing-red/30 flex items-center justify-center text-racing-red text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-wind"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold text-white mb-3">Aerodinamica Avanzata</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Studio accurato dei flussi d'aria con software CAD e simulazioni CFD per minimizzare la resistenza frontale e massimizzare il carico deportante in curva.
+                    </p>
+                </div>
+
+                <!-- Spec 2 -->
+                <div class="p-8 rounded-2xl bg-carbon-900 border border-white/10 hover:border-racing-red/60 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-racing-red/10 border border-racing-red/30 flex items-center justify-center text-racing-red text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-feather"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold text-white mb-3">Materiali Ultraleggeri</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Utilizzo di polimeri compositi ad altissima resistenza e precisione millimetrica per ridurre drasticamente il peso complessivo senza compromessi strutturali.
+                    </p>
+                </div>
+
+                <!-- Spec 3 -->
+                <div class="p-8 rounded-2xl bg-carbon-900 border border-white/10 hover:border-racing-red/60 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-racing-red/10 border border-racing-red/30 flex items-center justify-center text-racing-red text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-bolt-lightning"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold text-white mb-3">Propulsione & Setup</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Sistemi di propulsione calibrati per erogare la massima potenza istantanea allo start, garantendo il record della pista registrato alle selezioni Centro-Sud.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Banner Componenti Chiave Interattivo -->
+            <div class="p-8 rounded-3xl bg-gradient-to-r from-carbon-900 via-carbon-800 to-carbon-900 border border-racing-red/30 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-8">
+                <div>
+                    <span class="text-xs uppercase font-bold tracking-widest text-racing-red">Scheda Tecnica Ufficiale</span>
+                    <h4 class="font-display text-3xl font-bold text-white mt-1">Pronti per la stagione 26/27</h4>
+                    <p class="text-gray-300 text-sm mt-2 max-w-xl">
+                        Il team tecnico ha perfezionato l'assetto sospensioni e la lubrificazione dei cuscinetti per affrontare al massimo le sfide della nuova stagione.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-4">
+                    <div class="px-5 py-3 rounded-xl bg-carbon-950 border border-white/10 text-center">
+                        <span class="block text-xs text-gray-400">Software CAD</span>
+                        <span class="font-display font-bold text-white text-lg">SolidWorks / Fusion</span>
+                    </div>
+                    <div class="px-5 py-3 rounded-xl bg-carbon-950 border border-white/10 text-center">
+                        <span class="block text-xs text-gray-400">Filtro Tolleranza</span>
+                        <span class="font-display font-bold text-racing-red text-lg">&plusmn; 0.05 mm</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== IL TEAM / ROSTER ==================== -->
+    <section id="team" class="py-24 bg-carbon-900/60 border-y border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-racing-red font-display font-bold uppercase tracking-widest text-sm">Le Menti della Scuderia</span>
+                <h2 class="font-display text-4xl sm:text-5xl font-bold text-white uppercase mt-2 mb-4">
+                    Il Nostro <span class="text-racing-red">Team</span>
+                </h2>
+                <p class="text-gray-400">
+                    Studenti dell'ITT Jannuzzi uniti dalla passione per i motori, la meccanica e l'innovazione tecnologica.
+                </p>
+            </div>
+
+            <!-- Griglia Membri -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Membro 1 -->
+                <div class="rounded-2xl bg-carbon-900 border border-white/10 overflow-hidden group hover:border-racing-red/60 transition-all flex flex-col justify-between shadow-lg">
+                    <div class="h-28 bg-gradient-to-r from-racing-red to-carbon-800 p-5 flex justify-between items-start relative">
+                        <span class="px-3 py-1 rounded-full bg-carbon-950/80 text-white text-xs font-display font-bold uppercase">Team Manager</span>
+                        <i class="fa-solid fa-user-gear text-white/30 text-3xl"></i>
+                    </div>
+                    <div class="p-6 -mt-8 relative">
+                        <div class="w-16 h-16 rounded-2xl bg-carbon-800 border-4 border-carbon-900 flex items-center justify-center font-display text-2xl font-bold text-white shadow-xl mb-4">
+                            TM
+                        </div>
+                        <h3 class="font-display text-2xl font-bold text-white">Direzione Sportiva</h3>
+                        <p class="text-xs text-racing-red font-semibold uppercase tracking-wider mb-3">Leadership & Strategia</p>
+                        <p class="text-sm text-gray-400">Coordina le attività di reparto, gestisce le tempistiche di progetto e guida la scuderia verso gli obiettivi.</p>
+                    </div>
+                </div>
+
+                <!-- Membro 2 -->
+                <div class="rounded-2xl bg-carbon-900 border border-white/10 overflow-hidden group hover:border-racing-red/60 transition-all flex flex-col justify-between shadow-lg">
+                    <div class="h-28 bg-gradient-to-r from-carbon-700 to-carbon-800 p-5 flex justify-between items-start relative">
+                        <span class="px-3 py-1 rounded-full bg-carbon-950/80 text-white text-xs font-display font-bold uppercase">Design Engineer</span>
+                        <i class="fa-solid fa-pencil text-white/30 text-3xl"></i>
+                    </div>
+                    <div class="p-6 -mt-8 relative">
+                        <div class="w-16 h-16 rounded-2xl bg-carbon-800 border-4 border-carbon-900 flex items-center justify-center font-display text-2xl font-bold text-white shadow-xl mb-4">
+                            DE
+                        </div>
+                        <h3 class="font-display text-2xl font-bold text-white">Ingegneria CAD</h3>
+                        <p class="text-xs text-racing-red font-semibold uppercase tracking-wider mb-3">Modellazione 3D & CFD</p>
+                        <p class="text-sm text-gray-400">Specializzato nella progettazione parametrica e nell'analisi fluidodinamica per ottimizzare il profilo della vettura.</p>
+                    </div>
+                </div>
+
+                <!-- Membro 3 -->
+                <div class="rounded-2xl bg-carbon-900 border border-white/10 overflow-hidden group hover:border-racing-red/60 transition-all flex flex-col justify-between shadow-lg">
+                    <div class="h-28 bg-gradient-to-r from-racing-red to-carbon-800 p-5 flex justify-between items-start relative">
+                        <span class="px-3 py-1 rounded-full bg-carbon-950/80 text-white text-xs font-display font-bold uppercase">Manufacturing</span>
+                        <i class="fa-solid fa-gears text-white/30 text-3xl"></i>
+                    </div>
+                    <div class="p-6 -mt-8 relative">
+                        <div class="w-16 h-16 rounded-2xl bg-carbon-800 border-4 border-carbon-900 flex items-center justify-center font-display text-2xl font-bold text-white shadow-xl mb-4">
+                            ME
+                        </div>
+                        <h3 class="font-display text-2xl font-bold text-white">Reparto Corse</h3>
+                        <p class="text-xs text-racing-red font-semibold uppercase tracking-wider mb-3">Lavorazioni & Assemblaggio</p>
+                        <p class="text-sm text-gray-400">Cura la produzione fisica dei componenti, l'assemblaggio meccanico e i test di affidabilità sul banco prova.</p>
+                    </div>
+                </div>
+
+                <!-- Membro 4 -->
+                <div class="rounded-2xl bg-carbon-900 border border-white/10 overflow-hidden group hover:border-racing-red/60 transition-all flex flex-col justify-between shadow-lg">
+                    <div class="h-28 bg-gradient-to-r from-carbon-700 to-carbon-800 p-5 flex justify-between items-start relative">
+                        <span class="px-3 py-1 rounded-full bg-carbon-950/80 text-white text-xs font-display font-bold uppercase">Marketing & Sponsor</span>
+                        <i class="fa-solid fa-bullhorn text-white/30 text-3xl"></i>
+                    </div>
+                    <div class="p-6 -mt-8 relative">
+                        <div class="w-16 h-16 rounded-2xl bg-carbon-800 border-4 border-carbon-900 flex items-center justify-center font-display text-2xl font-bold text-white shadow-xl mb-4">
+                            MS
+                        </div>
+                        <h3 class="font-display text-2xl font-bold text-white">Comunicazione</h3>
+                        <p class="text-xs text-racing-red font-semibold uppercase tracking-wider mb-3">Brand & Partner</p>
+                        <p class="text-sm text-gray-400">Gestisce l'identità visiva della scuderia, i social media, le relazioni con gli sponsor e la presentazione ufficiale.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SPONSOR (2026 / 2027) ==================== -->
+    <section id="sponsor" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="text-racing-red font-display font-bold uppercase tracking-widest text-sm">Partner &amp; Sostenitori</span>
+                <h2 class="font-display text-4xl sm:text-5xl font-bold text-white uppercase mt-2 mb-4">
+                    I Nostri <span class="text-racing-red">Sponsor</span>
+                </h2>
+                <p class="text-gray-400">
+                    Scegli la stagione da visualizzare: i partner che ci hanno accompagnato nel
